@@ -27,8 +27,9 @@ class chain:
                 cd[state][next]+=1 # increment by 1
         return cd
     
-    def generate_next(self,state):
+    def generate_next(self,state): # select next token based on current state
         return choice(compile_dict(self.model[tuple(state)]))
+        # just choose randomly from the list of possible tokens, weighted based on the model
     
     def generate(self,max_len=10000,min_len=0):
         current=["__BEGIN__" for _ in range(self.state_size)] # add starting tokens
@@ -57,7 +58,13 @@ if __name__ == "__main__":
     
     with open("input.txt","r") as f:
         text=f.read()
-    parts=text.split("Catching Fire - Suzanne Collins")
+    
+    #change what the text is split by as neccecary
+    parts=text.split(""" | P a g e 
+
+
+
+Catching Fire - Suzanne Collins """)
     # splitted=tuple(tuple(thing.split(" ")) for thing in parts)
     splitted=tuple(tuple([*thing]) for thing in parts)
     
