@@ -60,11 +60,7 @@ if __name__ == "__main__":
         text=f.read()
     
     #change what the text is split by as neccecary
-    parts=text.split(""" | P a g e 
-
-
-
-Catching Fire - Suzanne Collins """)
+    parts=text.split("--SPLITTER--")
     # splitted=tuple(tuple(thing.split(" ")) for thing in parts)
     splitted=tuple(tuple([*thing]) for thing in parts)
     
